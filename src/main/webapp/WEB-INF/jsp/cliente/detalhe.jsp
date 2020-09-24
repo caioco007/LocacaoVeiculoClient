@@ -8,6 +8,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
@@ -27,8 +28,8 @@
 </script>
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home">Company name</a>
+	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top w3-indigo flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home"><img src="img/pngegg.png"></a>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto px-3">
 			    <li class="nav-item text-nowrap">
@@ -74,7 +75,7 @@
 							<span> <i class='fas fa-user-alt'></i>
 						</span> Clientes
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/clientes">
+					<li class="nav-item"><a class="nav-link" href="https://github.com/caioco007/LocacaoVeiculoClient.git">
 							<span> <i class='fab fa-github'></i>
 						</span> Git Repository
 					</a></li>
@@ -87,16 +88,11 @@
 			<div>
 				<h1 class="h2">Cadastro de Cliente</h1>
 			</div>
-			<div>
-				<p class="help-block">
-					<h11>*</h11>
-					Campo Obrigatório
-				</p>
-			</div>
 		</div>
 		<div class="container">
 			<form class="form-horizontal" role="form" action="/cliente/incluir"
-				method="post">
+				method="post">				
+			<input type="hidden" name="id" value="${cliente.id}">
 				
 				<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 					<h5 class="h6">Dados Pessoais</h5>
@@ -105,57 +101,42 @@
 				<div class="row">
 					<div class="col-sm-8">
 						<label for="usr">Nome:</label>
-						<h11>*</h11>
-						<input type="text" class="form-control" name="nome">
+						<input type="text" class="form-control" name="nome" value="${cliente.nome}">
 					</div>
 		
 					<div class="form-row col-md-10">
 						<div class="col-sm-5">
 							<label for="usr">CPF:</label>
-							<h11>*</h11>
-							<input type="text" class="form-control" name="cpf">
+							<input type="text" class="form-control" name="cpf" value="${cliente.cpf}">
 						</div>
 						<div class="col-sm-3">
 							<label for="data">Nascimento:</label>
-							<h11>*</h11>
-							<input type="date" class="form-control" name="nascimento">
+							<input type="date" class="form-control" name="nascimento" value="${cliente.nascimento}">
 						</div>
 						<div class="col-sm-3">
 							<label for="usr">Nº Celular:</label>
-							<h11>*</h11>
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text" id="inputGroupPrepend"> <svg
-											width="1em" height="1em" viewBox="0 0 16 16"
-											class="bi bi-telephone-fill" fill="currentColor"
-											xmlns="http://www.w3.org/2000/svg">
-				  						<path fill-rule="evenodd"
-												d="M2.267.98a1.636 1.636 0 0 1 2.448.152l1.681 2.162c.309.396.418.913.296 1.4l-.513 2.053a.636.636 0 0 0 .167.604L8.65 9.654a.636.636 0 0 0 .604.167l2.052-.513a1.636 1.636 0 0 1 1.401.296l2.162 1.681c.777.604.849 1.753.153 2.448l-.97.97c-.693.693-1.73.998-2.697.658a17.47 17.47 0 0 1-6.571-4.144A17.47 17.47 0 0 1 .639 4.646c-.34-.967-.035-2.004.658-2.698l.97-.969z" />
-									  </svg>
+									<span class="input-group-text" id="inputGroupPrepend"> 
+									  <i class='fas fa-phone-alt'></i>
 									</span>
 								</div>
 								<input type="tel" class="form-control"
-									placeholder="(DDD)xxxxx-xxxx" name="celular">
+									placeholder="(DDD)xxxxx-xxxx" name="celular" value="${cliente.celular}">
 							</div>
 						</div>
 					</div>
 		
 					<div class="col-sm-6">
 						<label for="uname">E-mail:</label>
-						<h11>*</h11>
 						<div class="input-group">
 							<div class="input-group-prepend">
-								<span class="input-group-text" id="inputGroupPrepend"> <svg
-										width="1em" height="1em" viewBox="0 0 16 16"
-										class="bi bi-envelope-fill" fill="currentColor"
-										xmlns="http://www.w3.org/2000/svg">
-							    <path fill-rule="evenodd"
-											d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z" />
-							  </svg>
+								<span class="input-group-text" id="inputGroupPrepend"> 
+									<i class='fas fa-envelope'></i>
 								</span>
 							</div>
 							<input type="text" class="form-control"
-								placeholder="Entre com o e-mail" name="email">
+								placeholder="Entre com o e-mail" name="email" value="${cliente.email}">
 						</div>
 					</div>
 				</div>
@@ -167,8 +148,7 @@
 					
 					<div class="row">
 						<div class="form-group col-sm-8">
-							<label for="cep">CEP</label> 						
-							<h11>*</h11>
+							<label for="cep">CEP</label> 
 							<input type="text" class="form-control" id="cep" name="cep" value="${cliente.cep}">
 							<a href="#" class="text-sm-right float-right" id="consultarCep">Consultar CEP</a>
 						</div>
@@ -189,8 +169,7 @@
 						
 						<div class="form-group col-sm-1">
 							<label for="usr">Nº:</label>
-							<h11>*</h11>
-							<input type="text" class="form-control" name="num">
+							<input type="text" class="form-control" name="num" value="${cliente.num}">
 						</div>
 					</div>
 					

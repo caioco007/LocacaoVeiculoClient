@@ -12,13 +12,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script type="text/javascript" src="<c:url value='js/dashboard.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='\css\dashboard.css' />">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home">Company name</a>
+	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top w3-indigo flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home"><img src="img/pngegg.png"></a>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto px-3">
 			    <li class="nav-item text-nowrap">
@@ -64,7 +65,7 @@
 							<span> <i class='fas fa-user-alt'></i>
 						</span> Clientes
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/clientes">
+					<li class="nav-item"><a class="nav-link" href="https://github.com/caioco007/LocacaoVeiculoClient.git">
 							<span> <i class='fab fa-github'></i>
 						</span> Git Repository
 					</a></li>
@@ -107,6 +108,7 @@
 			 			<c:forEach var="l" items="${locacoes}">
 					  		<fmt:parseDate value="${l.dtLocacao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada" type="date"/>
 					    	<fmt:parseDate value="${l.dtDevolucao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada1" type="date"/>
+					    	<fmt:setLocale value="pt-BR" />
 					  		
 						    <tr>
 						        <td>${l.id}</td>
@@ -115,7 +117,7 @@
 						        <td><fmt:formatDate value="${dataFormatada1}" type="date" pattern="dd/MM/yyyy HH:mm"/></td>
 						        <td>${l.veiculos}</td>
 						        <td>${l.daysBetween}</td>
-						        <td>${l.valorTotal2()}</td>
+						        <td><fmt:formatNumber value="${l.valorTotal2()}" minFractionDigits="2" type="currency" /></td>
 						        <td class="actions">
 			                        <a class="btn btn-success btn-xs"  href="/locacao/${l.id}/consultar">Consultar</a>			                    
 			                        <a class="btn btn-danger btn-xs"  href="/locacao/${l.id}/excluir">Excluir</a>

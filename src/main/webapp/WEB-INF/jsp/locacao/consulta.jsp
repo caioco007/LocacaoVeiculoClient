@@ -11,28 +11,88 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+<script type="text/javascript" src="<c:url value='js/dashboard.js'/>"></script>
+<link rel="stylesheet" href="<c:url value='\css\dashboard.css' />">
 </head>
 <body>
-
-	<div class="container">
-
-		<div class="container-fluid" style="margin-top:80px">		
-			<c:import url="/WEB-INF/jsp/header.jsp"/>
-		</div>			
+	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top w3-indigo flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home"><img src="img/pngegg.png"></a>
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto px-3">
+			    <li class="nav-item text-nowrap">
+			      <a class="nav-link" href="/locacoes">Locações</a>
+			    </li>
+			    <li class="nav-item text-nowrap">
+			      <a class="nav-link" href="/cliente">Clientes</a>
+			    </li>
+			    <li class="nav-item dropdown">
+		        <a class="nav-link dropdown-toggle" href="/veiculos" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		          Veiculos
+		        </a>
+		          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		            <a class="dropdown-item" href="/economico">Economicos</a>
+		            <a class="dropdown-item" href="/executivo">Executivos</a>
+		            <a class="dropdown-item" href="/picape">Picapes</a>
+		          </div>
+		        </li>
+			  </ul>
+			  <span class="navbar-text">
+			  	<a class="nav-link"	href="/sair">Sign out: ${user.nome}</a>
+			  </span>
+		</div>
+	</nav>
+	<div class="row">
+		<nav id="sidebarMenu"
+			class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+			<div class="sidebar-sticky pt-3">
+				<ul class="nav flex-column">
+					<li class="nav-item"><a class="nav-link" href="/home">
+							<span> <i class='fa fa-home'></i>
+						</span> Home
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/locacoes">
+							<span> <i class='fas fa-file'></i>
+						</span> Locações
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/veiculos">
+							<span> <i class='fas fa-car'></i>
+						</span> Veiculos
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="/clientes">
+							<span> <i class='fas fa-user-alt'></i>
+						</span> Clientes
+					</a></li>
+					<li class="nav-item"><a class="nav-link" href="https://github.com/caioco007/LocacaoVeiculoClient.git">
+							<span> <i class='fab fa-github'></i>
+						</span> Git Repository
+					</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+	<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
 	
-		<h3>Locações: ${operacao}</h3>
+		<div
+			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+			<div>
+				<h1 class="h2">Locação: ${operacao}</h1>
+			</div>
+		</div>
 	
 	    <div class="form-group">
 	      <label for="usr">Cliente:</label>
 	      <label for="usr">${locacao.cliente}</label>
 	    </div>
 		
-		<fmt:parseDate value="${l.dtLocacao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada" type="date"/>
-		<fmt:parseDate value="${l.dtDevolucao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada1" type="date"/>
+		<fmt:parseDate value="${locacao.dtLocacao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada" type="date"/>
+		<fmt:parseDate value="${locacao.dtDevolucao}" pattern="yyyy-MM-dd'T'HH:mm" var="dataFormatada1" type="date"/>
+		<fmt:setLocale value="pt-BR" />
 		
 	    <div class="form-group">
 	      <label for="usr">Data de Locação:</label>
-	      <label for="usr">${locacao.dtLocacao}</label>
+	      <label for="usr"><fmt:formatDate value="${dataFormatada}" type="date" pattern="dd/MM/yyyy HH:mm"/></label>
 	    </div>
 	    
 	    <div class="form-group">
@@ -41,30 +101,20 @@
 	    </div>
 	    
 	    <div class="form-group">
+			<label for="usr">Veiculo:</label>
+			<c:forEach var="v" items="${locacao.veiculos}">
+				<td>${v}</td>
+			</c:forEach>
+		</div>
+	    
+	    <div class="form-group">
+	    	
 	      <label for="usr">Valor da Locação:</label>
-	      <label for="usr">${locacao.valorTotal2()}</label>
+	      <label for="usr"><fmt:formatNumber value="${locacao.valorTotal2()}" minFractionDigits="2" type="currency" /></label>
 	    </div>
 
-		<div class="form-group">
-			<label for="usr">Veiculos:</label>
-
-			<table class="table table-striped">
-			    <thead>
-			      <tr>
-			        <th>ID</th>
-			        <th>VEICULOS</th>
-			      </tr>
-			    </thead>
-			    <tbody>
-			    	<c:forEach var="v" items="${locacao.veiculos}">
-				      <tr>
-				        <td>${v.id}</td>
-				        <td>${v}</td>
-				      </tr>
-			      </c:forEach>
-			    </tbody>
-			</table>	
-		</div>	
-	</div>
+			
+	</main>
+	
 </body>
 </html>

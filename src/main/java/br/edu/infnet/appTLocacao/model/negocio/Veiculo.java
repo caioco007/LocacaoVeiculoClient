@@ -16,7 +16,7 @@ public class Veiculo {
 
 	@Override
 	public String toString() {
-		return String.format("%s - %s",
+		return String.format("Modelo: %s, Placa: %s",
 				this.getModelo(),
 				this.getPlaca()
 			);

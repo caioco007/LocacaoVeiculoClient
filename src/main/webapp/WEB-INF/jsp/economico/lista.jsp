@@ -12,13 +12,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 <script type="text/javascript" src="<c:url value='js/dashboard.js'/>"></script>
 <link rel="stylesheet" href="<c:url value='\css\dashboard.css' />">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
-		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home">Company name</a>
+	<nav class="navbar navbar-expand-lg	 navbar-dark sticky-top w3-indigo flex-md-nowrap p-0 shadow">
+		<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/home"><img src="img/pngegg.png"></a>
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto px-3">
 			    <li class="nav-item text-nowrap">
@@ -64,7 +65,7 @@
 							<span> <i class='fas fa-user-alt'></i>
 						</span> Clientes
 					</a></li>
-					<li class="nav-item"><a class="nav-link" href="/clientes">
+					<li class="nav-item"><a class="nav-link" href="https://github.com/caioco007/LocacaoVeiculoClient.git">
 							<span> <i class='fab fa-github'></i>
 						</span> Git Repository
 					</a></li>
@@ -102,14 +103,15 @@
 			            <th class="actions">AÇÕES</th>
 				      </tr>
 				    </thead>
-				    <tbody>
+				    <tbody>	
 				    	<c:forEach var="ec" items="${economicos}">
+				    	  <fmt:setLocale value="pt-BR" />
 					      <tr>
 					        <td>${ec.id}</td>
 					        <td>${ec.marca}</td>
 					        <td>${ec.modelo}</td>
 					        <td>${ec.placa}</td>
-					        <td>${ec.valor}</td>
+					        <td><fmt:formatNumber value="${ec.valor}" minFractionDigits="2" type="currency" /></td>
 					      	<td class="actions">
 	<!-- 							        	<a class="btn btn-success btn-xs" href="view.html">Visualizar</a> -->
 								<a class="btn btn-warning btn-xs" href="/economico/${ec.id}/alterar">Editar</a>		                    
