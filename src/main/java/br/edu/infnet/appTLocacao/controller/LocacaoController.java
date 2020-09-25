@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,32 +55,39 @@ public class LocacaoController {
 	@PostMapping(value = "/locacao/incluir")
 	public String incluir(
 				Model model,
-				@RequestParam String[] veiculosIds,
+				@RequestParam Optional<String[]> veiculosIds,
 				Locacao locacao,
 				@RequestParam String dtLoc,
 				@RequestParam String dtDev
 			) {
 		
-		locacao.setCliente(clienteService.obterPorId(locacao.getCliente().getId()));
-		
-		DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");		
-		locacao.setDtLocacao(LocalDateTime.parse(dtLoc, dt));
-		locacao.setDtDevolucao(LocalDateTime.parse(dtDev, dt));
-		
-		
-		List<Veiculo> lista = new ArrayList<Veiculo>();
-		
-		for(String id : veiculosIds) {
-			lista.add(veiculoService.obterPorId(Integer.valueOf(id)));
+		if(veiculosIds.isPresent()) {
+			locacao.setCliente(clienteService.obterPorId(locacao.getCliente().getId()));
+			
+			DateTimeFormatter dt = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");		
+			locacao.setDtLocacao(LocalDateTime.parse(dtLoc, dt));
+			locacao.setDtDevolucao(LocalDateTime.parse(dtDev, dt));
+			
+			
+			List<Veiculo> lista = new ArrayList<Veiculo>();
+			
+			for(String id : veiculosIds.get()) {
+				lista.add(veiculoService.obterPorId(Integer.valueOf(id)));
+			}
+			
+			locacao.setVeiculos(lista);
+			
+			locacao.setDaysBetween(ChronoUnit.DAYS.between(LocalDateTime.parse(dtLoc, dt), LocalDateTime.parse(dtDev, dt)));
+					
+			locacaoService.incluir(locacao);
+
+			return "redirect:/locacoes";
 		}
 		
-		locacao.setVeiculos(lista);
+		model.addAttribute("msgError", "Selecione pelo menos um produto");
 		
-		locacao.setDaysBetween(ChronoUnit.DAYS.between(LocalDateTime.parse(dtLoc, dt), LocalDateTime.parse(dtDev, dt)));
-				
-		locacaoService.incluir(locacao);
-
-		return "redirect:/locacoes";
+		return this.novo(model);
+		
 	}
 	
 	@GetMapping(value = "/locacao/{id}/excluir")

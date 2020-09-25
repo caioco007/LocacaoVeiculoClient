@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>TP3:  Desenvolvimento Web com Java EE</title>
+  <title>AppLocacao</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -17,8 +17,8 @@
 		
 	<div class="sidenav w3-indigo">
 		<div class="login-main-text">
-            <h2>Projeto TP3<br> Desenvolvimento Web com Java EE</h2>
-            <p>Sistema para cadastramento de usuários.</p>
+            <h2>Projeto AT<br>Projeto de Bloco</h2>
+            <p>Sistema de Locação de Veículos</p>
      	</div>
      </div>
 	 
