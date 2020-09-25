@@ -16,7 +16,8 @@ public class Veiculo {
 
 	@Override
 	public String toString() {
-		return String.format("Modelo: %s, Placa: %s",
+		return String.format("%d, Modelo: %s, Placa: %s",
+				this.getId(),
 				this.getModelo(),
 				this.getPlaca()
 			);

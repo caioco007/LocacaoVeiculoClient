@@ -8,12 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
   <link rel="stylesheet" href="<c:url value='\css\style.css' />">
 </head>
 <body>
 		
-	<div class="sidenav">
+	<div class="sidenav w3-indigo">
 		<div class="login-main-text">
             <h2>Projeto TP3<br> Desenvolvimento Web com Java EE</h2>
             <p>Sistema para cadastramento de usuários.</p>

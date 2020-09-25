@@ -22,19 +22,19 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto px-3">
 			    <li class="nav-item text-nowrap">
-			      <a class="nav-link" href="/locacoes">Locações</a>
+			      <a class="nav-link" href="/locacao">Locação</a>
 			    </li>
 			    <li class="nav-item text-nowrap">
-			      <a class="nav-link" href="/cliente">Clientes</a>
+			      <a class="nav-link" href="/cliente">Cliente</a>
 			    </li>
 			    <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="/veiculos" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          Veiculos
+		          Veiculo
 		        </a>
 		          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		            <a class="dropdown-item" href="/economico">Economicos</a>
-		            <a class="dropdown-item" href="/executivo">Executivos</a>
-		            <a class="dropdown-item" href="/picape">Picapes</a>
+		            <a class="dropdown-item" href="/economico">Economico</a>
+		            <a class="dropdown-item" href="/executivo">Executivo</a>
+		            <a class="dropdown-item" href="/picape">Picape</a>
 		          </div>
 		        </li>
 			  </ul>
@@ -77,12 +77,6 @@
 			class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
 			<div>
 				<h1 class="h2">Cadastro de Veiculo Picape ${operacao}</h1>
-			</div>
-			<div>
-				<p class="help-block">
-					<h11>*</h11>
-					Campo Obrigatório
-				</p>
 			</div>
 		</div>
 		

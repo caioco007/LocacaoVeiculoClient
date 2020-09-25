@@ -21,19 +21,19 @@
 		<div class="collapse navbar-collapse" id="navbarText">
 			<ul class="navbar-nav mr-auto px-3">
 			    <li class="nav-item text-nowrap">
-			      <a class="nav-link" href="/locacoes">Locações</a>
+			      <a class="nav-link" href="/locacao">Locação</a>
 			    </li>
 			    <li class="nav-item text-nowrap">
-			      <a class="nav-link" href="/cliente">Clientes</a>
+			      <a class="nav-link" href="/cliente">Cliente</a>
 			    </li>
 			    <li class="nav-item dropdown">
 		        <a class="nav-link dropdown-toggle" href="/veiculos" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		          Veiculos
+		          Veiculo
 		        </a>
 		          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		            <a class="dropdown-item" href="/economico">Economicos</a>
-		            <a class="dropdown-item" href="/executivo">Executivos</a>
-		            <a class="dropdown-item" href="/picape">Picapes</a>
+		            <a class="dropdown-item" href="/economico">Economico</a>
+		            <a class="dropdown-item" href="/executivo">Executivo</a>
+		            <a class="dropdown-item" href="/picape">Picape</a>
 		          </div>
 		        </li>
 			  </ul>
@@ -77,19 +77,13 @@
 			<div>
 				<h1 class="h2">Locação: ${operacao}</h1>
 			</div>
-			<div>
-				<p class="help-block">
-					<h11>*</h11>
-					Campo Obrigatório
-				</p>
-			</div>
 		</div>
 		
 		<div class="container">
 			<form action="/locacao/incluir" method="post">
 			
 			<div class="row">
-				<div class="form-group">
+				<div class="col-sm-5">
 				    <label for="usr">Cliente:</label>
 					<select name="cliente.id" class="form-control">
 						<c:forEach var="c" items="${clientes}">
@@ -101,17 +95,15 @@
 			 </div>
 			 
 			 <div class="row">	
-				  <div class="form-row col-md-10">	
-					  <div class="col-md-3 mb-3">
-					    <label for="dtLoc" class="mr-sm-2">Data de Locação:</label>
+					  <div class="col-sm-4">
+					    <label for="dtLoc" class="mr-sm-3">Data de Locação:</label>
 					  	<input type="datetime-local" class="form-control mb-2 mr-sm-2" name="dtLoc">
 					  </div>
 					  
-					  <div class="col-md-3 mb-3">
-					    <label for="dtDev" class="mr-sm-2">Data de Devolução:</label>
+					  <div class="col-sm-4">
+					    <label for="dtDev" class="mr-sm-3">Data de Devolução:</label>
 					  	<input type="datetime-local" class="form-control mb-2 mr-sm-2" name="dtDev">
 					  </div>
-				  </div>
 			  </div>
 			  
 			  <div class="row">		
@@ -121,7 +113,7 @@
 						<div class="form-check">
 						    <label class="form-check-label" for="exampleRadios1">
 						    	<c:forEach var="v" items="${veiculos}">
-									<input class="form-check-input" type="radio"  name="veiculosIds" value="${v.id}"> ${v}<br>
+									<input class="form-check-input" type="checkbox"  name="veiculosIds" value="${v.id}"> ${v}<br>
 								</c:forEach>
 						    </label>
 						</div>

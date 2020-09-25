@@ -12,13 +12,15 @@ public class Locacao {
 	private Long daysBetween;
 	private List<Veiculo> veiculos;
 	private Cliente cliente;
-	
+
 	public Float valorTotal2() {
 	    Float valor = 0F;
 	    Long dias = ChronoUnit.DAYS.between(this.getDtLocacao(), this.getDtDevolucao());
 
 	    for (Veiculo v : this.getVeiculos()) {
-	        valor = valor + (v.getValor() * dias);
+	    	if(v.getValor() != null) {
+	    		valor = valor + (v.getValor() * dias);
+	    	}	        
 	    }
 
 	    return valor;
