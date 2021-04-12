@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import br.edu.infnet.appTLocacao.model.negocio.Picape;
 
-@FeignClient(url = "http://localhost:8081/api/locacao/picape", name = "picapeClient")
+@FeignClient(url = "https://app-locacao.herokuapp.com/api/locacao/picape", name = "picapeClient")
 public interface IPicapeClient {
 	
 	@GetMapping(value = "/obter")
