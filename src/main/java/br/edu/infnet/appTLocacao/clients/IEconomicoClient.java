@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import br.edu.infnet.appTLocacao.model.negocio.Economico;
 
-@FeignClient(url = "http://localhost:8081/api/locacao/economico", name = "economicoClient")
+@FeignClient(url = "https://app-locacao.herokuapp.com/api/locacao/economico", name = "economicoClient")
 public interface IEconomicoClient {
 	
 	@GetMapping(value = "/obter")
