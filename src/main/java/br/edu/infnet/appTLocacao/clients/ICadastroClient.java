@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.infnet.appTLocacao.model.negocio.Cadastro;
 
-@FeignClient(url = "http://localhost:8081/api/locacao/cadastro", name = "cadastroClient")
+@FeignClient(url = "https://app-locacao.herokuapp.com/api/locacao/cadastro", name = "cadastroClient")
 public interface ICadastroClient {
 	
 	@PostMapping
