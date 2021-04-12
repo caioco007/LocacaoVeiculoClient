@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import br.edu.infnet.appTLocacao.model.negocio.Locacao;
 
-@FeignClient(url = "http://localhost:8081/api/locacao", name = "locacaoClient")
+@FeignClient(url = "https://app-locacao.herokuapp.com/api/locacao", name = "locacaoClient")
 public interface ILocacaoClient {
 	
 	@GetMapping(value = "/obter")
